@@ -8,8 +8,8 @@ class Settings(BaseSettings):
     database_url: str = "sqlite:///./youtube_manager.db"
     # Vite may be opened as either localhost or 127.0.0.1.  Those are
     # separate browser origins, so both must be allowed by CORS.
-    frontend_origins: str = "http://localhost:5173,http://127.0.0.1:5173"
-    backend_origin: str = "http://127.0.0.1:8000"
+  frontend_origins: str = "https://yt-manager-ashen.vercel.app"
+    backend_origin: str = "https://yt-manager-528b.onrender.com"
     timezone: str = "Asia/Kolkata"
     storage_dir: str = "storage"
     google_client_secret_file: str = "youtube_client_secret.json"
