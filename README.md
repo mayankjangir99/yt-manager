@@ -44,6 +44,16 @@ Open http://localhost:5173
 4. Use Upload Video for manual uploads, or place supported video files in the watched folder.
 5. Review/edit metadata and enable automatic scheduling. Enable auto-publish only if you want the system to schedule videos without review.
 
+## Deploying the backend on Render
+
+1. Create a Render PostgreSQL database and a Render Web Service from this repository. Set the Web Service root directory to `backend`.
+2. Use build command `pip install -r requirements.txt` and start command `uvicorn app.main:app --host 0.0.0.0 --port $PORT`.
+3. Set `DATABASE_URL` to the database's **Internal Database URL**. The app accepts Render's `postgresql://...` URL and uses the bundled psycopg driver.
+4. Set `FRONTEND_ORIGINS` to the deployed Vercel URL, and `BACKEND_ORIGIN` to the deployed Render service URL. Set the health check path to `/api/health`.
+5. Add the deployed `BACKEND_ORIGIN` callback URL (`/api/youtube/oauth/callback`) to Google Cloud OAuth. Keep Google client credentials and OAuth tokens in Render secrets, never in Git.
+
+The local folder watcher cannot access folders on your personal computer when the backend runs in the cloud. Use manual uploads or add cloud object storage for production video storage.
+
 ## Important behavior
 - Files discovered in a watched folder are added to the queue; they are not uploaded until automation is enabled.
 - Auto metadata generation uses deterministic starter templates. Connect an AI provider later if you want AI-written titles/descriptions.
