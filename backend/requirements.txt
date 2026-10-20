@@ -1,0 +1,12 @@
+fastapi>=0.115,<1
+uvicorn[standard]>=0.30,<1
+sqlalchemy>=2.0,<3
+pydantic-settings>=2.4,<3
+python-multipart>=0.0.9
+apscheduler>=3.10,<4
+watchdog>=4.0,<7
+google-api-python-client>=2.140
+google-auth>=2.34
+google-auth-oauthlib>=1.2
+google-auth-httplib2>=0.2
+cryptography>=43
